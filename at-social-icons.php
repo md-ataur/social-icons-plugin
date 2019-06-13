@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name:  At Social Icons
- * Plugin URI:
+ * Plugin URI:   https://github.com/md-ataur/social-icons-plugin
  * Description:  Social Icons Widget
  * Version:      1.0
- * Author:       Ataur Rahman
- * Author URI:	 https://md-ataur.github.io/
+ * Author:       Themehum
+ * Author URI:	 https://themeforest.net/user/themehum
  * License:      GPLv2 or later
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:  socialicons
@@ -38,7 +38,7 @@ class ATSocialIcons extends WP_Widget
     }
 
 	function socialicons_assets(){
-		wp_enqueue_style( "font-awesome", "//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" );
+		wp_enqueue_style( "font-awesome", "//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" );
 	}
 
 
@@ -77,20 +77,18 @@ class ATSocialIcons extends WP_Widget
     		echo wp_kses_post($args['before_title']);
     		echo apply_filters( 'widget_title', $instance['title'] );
     		echo wp_kses_post($args['after_title']);
-    	}
-		
-    	?>
+    	}		
+        ?>
 
     	<ul class="<?php echo esc_attr($instance['classname']);?>">
     		<?php
     		foreach ($social_icons as $si) {
     			$url = trim($instance[$si]);
     			if (!empty($url)) {
-    				echo "<li><a target='__blank' href='".esc_html( $url )."'><i class='fa fa-".esc_attr($si)."'></i></a></li>";
-    			}    			
+    				echo "<li><a target='__blank' href='".esc_html( $url )."'><i class='fab fa-".esc_attr($si)."'></i></a></li>";
+    			}
     		}
-    		?>
-	
+    		?>	
     	</ul>
     	<?php
       	echo wp_kses_post($args['after_widget']);
